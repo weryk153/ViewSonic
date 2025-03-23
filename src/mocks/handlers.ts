@@ -35,14 +35,4 @@ export const handlers = [
       { id: 'rkn35', name: 'Van', seatNumber: '30' },
     ])
   }),
-
-  // 可擴充其他 API，例如：
-  http.post('/api/students', async ({ request }) => {
-    const newStudent = await request.json()
-    return HttpResponse.json(newStudent, { status: 201 })
-  }),
-
-  http.get('/api/error', () => {
-    return new HttpResponse(null, { status: 500 })
-  }),
 ]

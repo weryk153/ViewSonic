@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from '@/store'
-import { generateGroups, resetGroups } from '@/store/groupSlice'
+import { generateGroups } from '@/store/groupSlice'
 import { resetScores, selectStudents } from '@/store/studentSlice'
 import { MenuButton, MenuDropdown, MenuItem, MenuWrapper } from './style'
 

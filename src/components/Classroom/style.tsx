@@ -1,11 +1,5 @@
 import styled from 'styled-components'
 
-export const Header = styled.div`
-  font-size: 24px;
-  font-weight: bold;
-  padding: 40px;
-`
-
 export const TabContainer = styled.div`
   position: relative;
   display: flex;
@@ -21,15 +15,15 @@ export const TabButton = styled.button<{ $active: boolean }>`
   font-weight: bold;
   cursor: pointer;
   border-radius: 8px 8px 0 0;
-  background: ${({ $active }) => ($active ? 'white' : '#d0d0d0')};
-  color: ${({ $active }) => ($active ? '#3992ff' : '#000')};
+  background: ${({ $active }) => ($active ? '#fff' : '#d0d0d0')};
+  color: ${({ $active, theme }) => ($active ? theme.colors.blue : '#000')};
   box-shadow: ${({ $active }) => ($active ? '0px -2px 3px rgba(0, 0, 0, 0.1)' : 'none')};
   z-index: 2;
 `
 
 export const TabContent = styled.div`
   overflow-y: auto;
-  background: white;
+  background: #fff;
   border-radius: 16px;
   padding: 24px 40px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
@@ -45,13 +39,13 @@ export const StudentCard = styled.div<{ $isOnline: boolean }>`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  border: 2px solid ${({ $isOnline }) => ($isOnline ? '#3992ff' : '#ccc')};
-  background: white;
+  border: 2px solid ${({ $isOnline, theme }) => ($isOnline ? theme.colors.blue : theme.colors.gray)};
+  background: #fff;
 `
 
 export const StudentSeat = styled.div<{ $isOnline: boolean }>`
-  background: ${({ $isOnline }) => ($isOnline ? '#3992ff' : '#ccc')};
-  color: white;
+  background: ${({ $isOnline, theme }) => ($isOnline ? theme.colors.blue : theme.colors.gray)};
+  color: #fff;
   font-weight: bold;
   text-align: center;
   padding: 4px 0;
@@ -60,7 +54,7 @@ export const StudentSeat = styled.div<{ $isOnline: boolean }>`
 export const StudentName = styled.div<{ $isOnline: boolean }>`
   font-size: 20px;
   font-weight: bold;
-  color: ${({ $isOnline }) => ($isOnline ? '#000' : '#ccc')};
+  color: ${({ $isOnline, theme }) => ($isOnline ? '#000' : theme.colors.gray)};
   padding: 16px 0;
   text-align: center;
 `
@@ -83,27 +77,27 @@ export const ScoreControls = styled.div<{ $isOnline: boolean }>`
   }
 
   .minus {
-    background: ${({ $isOnline }) => ($isOnline ? '#dc3545' : '#ccc')};
-    color: white;
+    background: ${({ $isOnline, theme }) => ($isOnline ? '#dc3545' : theme.colors.gray)};
+    color: #fff;
     width: 40px;
   }
 
   .plus {
-    background: ${({ $isOnline }) => ($isOnline ? '#28a745' : '#ccc')};
-    color: white;
+    background: ${({ $isOnline, theme }) => ($isOnline ? '#28a745' : theme.colors.gray)};
+    color: #fff;
     width: 40px;
   }
 
   .score {
     font-weight: bold;
     font-size: 18px;
-    color: ${({ $isOnline }) => ($isOnline ? '#000' : '#ccc')};
+    color: ${({ $isOnline, theme }) => ($isOnline ? '#000' : theme.colors.gray)};
   }
 `
 export const Divider = styled.div<{ $isOnline: boolean }>`
   width: 100%;
   height: 2px;
-  background: ${({ $isOnline }) => ($isOnline ? '#3992ff' : '#ccc')};
+  background: ${({ $isOnline, theme }) => ($isOnline ? theme.colors.blue : theme.colors.gray)};
   margin: 0;
 `
 
@@ -114,7 +108,7 @@ export const GroupListWrapper = styled.div`
 `
 
 export const GroupContainer = styled.div`
-  border-left: 6px solid #007bff;
+  border-left: 6px solid ${({ theme }) => theme.colors.blue};
   background: #f0f4fb;
   padding: 16px 20px;
   border-radius: 12px;
@@ -130,7 +124,7 @@ export const GroupHeader = styled.div`
 export const GroupTitle = styled.div`
   font-size: 18px;
   font-weight: bold;
-  color: #007bff;
+  color: ${({ theme }) => theme.colors.blue};
 `
 
 export const GroupCount = styled.div`
@@ -148,7 +142,7 @@ export const GroupMembers = styled.ul`
 
 export const MemberItem = styled.li<{ $isOnline: boolean }>`
   padding: 10px 16px;
-  background: ${({ $isOnline }) => ($isOnline ? 'white' : '#ccc')};
+  background: ${({ $isOnline, theme }) => ($isOnline ? '#fff' : theme.colors.gray)};
   color: ${({ $isOnline }) => ($isOnline ? '#333' : '#888')};
   border-radius: 8px;
   font-weight: 500;

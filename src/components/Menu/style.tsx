@@ -19,7 +19,7 @@ export const MenuDropdown = styled.div`
   top: 100%;
   right: 0;
   margin-top: 4px;
-  background: white;
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -37,9 +37,5 @@ export const MenuItem = styled.button`
   cursor: pointer;
   &:hover {
     background: #f5f5f5;
-  }
-  &:disabled {
-    color: #999;
-    cursor: not-allowed;
   }
 `

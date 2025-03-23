@@ -1,5 +1,5 @@
 import Classroom from './components/Classroom'
-import { Container } from './components/Common'
+import { Container } from './components/Common/style'
 import QRCode from './components/QRCode'
 
 const App = () => {

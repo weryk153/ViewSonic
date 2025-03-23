@@ -5,11 +5,11 @@ import { startMockSocket } from '@/mocks/mockSocket'
 import { AppDispatch } from '@/store'
 import { generateGroups } from '@/store/groupSlice'
 import { fetchStudents, selectStudents } from '@/store/studentSlice'
-import { ModalContainer, CloseButton } from '../Common'
+import { ModalContainer, CloseButton, Header } from '../Common/style'
 import Menu from '../Menu'
 import GroupList from './GroupList'
 import StudentList from './StudentList'
-import { Header, TabButton, TabContainer, TabContent } from './style'
+import { TabButton, TabContainer, TabContent } from './style'
 
 const Index = () => {
   const [isOpen, setIsOpen] = useState(true)
@@ -36,7 +36,7 @@ const Index = () => {
 
   return (
     <ModalContainer $bgColor="#e8e8e8" $padding="0px" $visible={isOpen}>
-      <Header>
+      <Header $padding="40px">
         302 Science 👥 {onlineStudents.length}/{students.length}
       </Header>
       <TabContainer>
