@@ -19,6 +19,11 @@ export const TabButton = styled.button<{ $active: boolean }>`
   color: ${({ $active, theme }) => ($active ? theme.colors.blue : '#000')};
   box-shadow: ${({ $active }) => ($active ? '0px -2px 3px rgba(0, 0, 0, 0.1)' : 'none')};
   z-index: 2;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 120px;
+    font-size: 12px;
+  }
 `
 
 export const TabContent = styled.div`
@@ -27,12 +32,20 @@ export const TabContent = styled.div`
   border-radius: 16px;
   padding: 24px 40px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 12px 24px;
+  }
 `
 
 export const StudentListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `
 
 export const StudentCard = styled.div<{ $isOnline: boolean }>`
@@ -63,7 +76,10 @@ export const ScoreControls = styled.div<{ $isOnline: boolean }>`
   display: flex;
   justify-content: space-between;
   padding: 8px;
-  font-size: 16px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 12px;
+  }
 
   button {
     cursor: pointer;
@@ -78,13 +94,13 @@ export const ScoreControls = styled.div<{ $isOnline: boolean }>`
   .minus {
     background: ${({ $isOnline, theme }) => ($isOnline ? '#dc3545' : theme.colors.gray)};
     color: #fff;
-    width: 40px;
+    max-width: 40px;
   }
 
   .plus {
     background: ${({ $isOnline, theme }) => ($isOnline ? '#28a745' : theme.colors.gray)};
     color: #fff;
-    width: 40px;
+    max-width: 40px;
   }
 
   .score {

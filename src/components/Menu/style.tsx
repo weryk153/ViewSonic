@@ -11,6 +11,10 @@ export const MenuButton = styled.button`
   cursor: pointer;
   padding: 4px;
   font-weight: bold;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 24px;
+  }
 `
 
 export const MenuDropdown = styled.div`

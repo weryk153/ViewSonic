@@ -10,6 +10,12 @@ export const Container = styled.div`
   gap: 16px;
   padding: 16px;
   height: 100vh;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+  }
 `
 
 export const ModalContainer = styled.div<{ $bgColor?: string; $padding?: string; $visible: boolean }>`
@@ -20,10 +26,13 @@ export const ModalContainer = styled.div<{ $bgColor?: string; $padding?: string;
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
   visibility: ${({ $visible }) => ($visible ? 'visible' : 'hidden')};
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transition: opacity 0.3s ease;
+
+  @media (min-width: 767px) {
+    overflow: hidden;
+  }
 `
 
 export const CloseButton = styled.button`

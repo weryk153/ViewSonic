@@ -11,6 +11,11 @@ export const InfoBlock = styled.div`
   display: flex;
   gap: 40px;
   margin: 16px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    flex-direction: column;
+    gap: 8px;
+  }
 `
 
 export const InfoRow = styled.div`
@@ -20,6 +25,10 @@ export const InfoRow = styled.div`
   font-size: 20px;
   font-weight: bold;
   gap: 12px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    justify-content: flex-start;
+  }
 `
 
 export const QRCodeWrapper = styled.div`
@@ -33,8 +42,13 @@ export const QRCodeWrapper = styled.div`
     height: auto;
   }
 `
+
 export const Version = styled.p`
-  text-align: center;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 12px;
   color: #888;
+  text-align: center;
 `
