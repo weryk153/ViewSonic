@@ -45,7 +45,7 @@ if (import.meta.env.VITE_MOCK === 'true') {
 
 ---
 
-## 🧪 Mock 功能說明
+## 🧪 功能說明
 
 ### 👩‍🎓 學生名單
 
