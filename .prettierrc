@@ -3,5 +3,13 @@
   "tabWidth": 2,
   "semi": false,
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^(react/(.*)$)|^(react-(.*)$)|^(react$)|^(next/(.*)$)|^(next$)|^(@next/(.*)$)|^(next-(.*)$)",
+    "<THIRD_PARTY_MODULES>",
+    "^@/",
+    "^[./]",
+    "^[.]/[-a-zA-Z0-9_]+[.](css|scss|less)$"
+  ]
 }

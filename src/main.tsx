@@ -1,15 +1,23 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import { Provider } from 'react-redux'
 import App from './App.tsx'
-import { worker } from './mocks/browser'
+import './index.css'
+import store from './store'
 
-if (import.meta.env.VITE_MOCK === 'true') {
-  worker.start()
+const enableMocking = async () => {
+  if (import.meta.env.VITE_MOCK === 'true') {
+    const { worker } = await import('./mocks/browser')
+    await worker.start()
+  }
 }
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+enableMocking().then(() =>
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </StrictMode>,
+  ),
 )
