@@ -31,7 +31,6 @@ export const CloseButton = styled.button`
   top: 10px;
   right: 10px;
   background: none;
-  border: none;
   font-size: 20px;
   cursor: pointer;
 `
@@ -43,7 +42,6 @@ export const Header = styled.div<{ $padding?: string }>`
 
 export const CopyButton = styled.button`
   background-color: ${({ theme }) => theme.colors.blue};
-  border: none;
   border-radius: 6px;
   width: 28px;
   height: 28px;

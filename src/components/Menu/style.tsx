@@ -7,7 +7,6 @@ export const MenuWrapper = styled.div`
 
 export const MenuButton = styled.button`
   background: none;
-  border: none;
   font-size: 32px;
   cursor: pointer;
   padding: 4px;
@@ -33,7 +32,6 @@ export const MenuItem = styled.button`
   padding: 10px 16px;
   font-size: 14px;
   background: none;
-  border: none;
   cursor: pointer;
   &:hover {
     background: #f5f5f5;

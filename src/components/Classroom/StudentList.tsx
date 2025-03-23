@@ -15,7 +15,7 @@ const StudentList = () => {
     <StudentListContainer>
       {students.map((student) => (
         <StudentCard key={student.id} $isOnline={student.isOnline}>
-          <StudentSeat $isOnline={student.isOnline}>{String(student.seatNumber).padStart(2, '0')}</StudentSeat>
+          <StudentSeat $isOnline={student.isOnline}>{student.seatNumber}</StudentSeat>
           <StudentName $isOnline={student.isOnline}>{student.isOnline ? student.name : 'Guest'}</StudentName>
           <Divider $isOnline={student.isOnline} />
           <ScoreControls $isOnline={student.isOnline}>

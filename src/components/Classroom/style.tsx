@@ -66,7 +66,6 @@ export const ScoreControls = styled.div<{ $isOnline: boolean }>`
   font-size: 16px;
 
   button {
-    border: none;
     cursor: pointer;
     border-radius: 4px;
     font-size: 14px;

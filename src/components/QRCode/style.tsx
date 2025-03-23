@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const BackButton = styled.button`
-  border: none;
   background: none;
   margin: 12px 0;
   cursor: pointer;
