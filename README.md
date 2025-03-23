@@ -1,54 +1,83 @@
-# React + TypeScript + Vite
+# 👩‍🏫 ViewSonic Classroom App (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+這是一個模擬教室管理的前端專案，主要功能包含學生清單、分組管理、即時上線狀態模擬、QR Code 加入教室等。使用 React + Vite + Styled-Components + Redux Toolkit 搭建，並透過 MSW 模擬 API 與 Socket 行為。
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 技術棧
 
-## Expanding the ESLint configuration
+- ⚛️ React 18 + Vite
+- 🎨 Styled-Components
+- 🧠 Redux Toolkit
+- 🧪 MSW (Mock Service Worker)
+- 🧾 TypeScript
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🚀 專案啟動
+
+```bash
+# 安裝依賴
+pnpm install
+
+# 啟動開發環境（包含啟用 MSW Mock API）
+pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### ✅ 環境變數設定
 
-```js
-// eslint.config.js
-import reactDom from 'eslint-plugin-react-dom'
-import reactX from 'eslint-plugin-react-x'
+Mock 模式透過 `VITE_APP_MOCK=true` 控制，預設開啟。
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+請確認 `.env` 檔案中有設定：
+
 ```
+VITE_APP_MOCK=true
+```
+
+在 `main.tsx` 中會根據這個變數啟動 Mock Service Worker：
+
+```ts
+if (import.meta.env.VITE_MOCK === 'true') {
+  const { worker } = await import('./mocks/browser')
+  await worker.start()
+}
+```
+
+---
+
+## 🧪 Mock 功能說明
+
+### 👩‍🎓 學生名單
+
+- `/api/students` 回傳固定 30 位學生資料
+- 每位學生包含：`id`, `name`, `seatNumber`, `score`, `isOnline`
+- 初始分數為 0，初始為離線
+
+### 🔄 模擬即時上線狀態
+
+- 專案內建 `startMockSocket()`，啟動後每隔 1.5 秒隨機變更學生 `isOnline` 狀態
+- 離線學生：
+  - 顯示灰底
+  - 名稱改為「Guest」
+  - 加減分按鈕禁用
+
+### ➕ 分數調整
+
+- 老師可用 `+1` / `-1` 按鈕調整學生分數
+- 分數最低為 0，不能負數
+- 使用 Redux 儲存分數
+
+### 👥 自動分組
+
+- 進入 `Group` 分頁時，自動將學生隨機分成 5 人一組
+- 使用 Redux 儲存分組資料
+- 顯示每組上線人數，例如 `2/5`
+- 若學生上線狀態變更，分組狀態也會即時更新
+
+### 📱 QR Code
+
+- 顯示教室 ID、連結、QRCode
+- 使用者可複製 ID 或連結，會顯示 Toast 訊息
+- QRCode 使用 `qrcode.react` 套件
+
+---

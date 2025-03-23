@@ -25,7 +25,7 @@ const Index = () => {
       if (fetchStudents.fulfilled.match(action)) {
         const students = action.payload
         dispatch(generateGroups({ ids: students.map((s) => s.id) }))
-        stop = startMockSocket(2000)
+        stop = startMockSocket(1500)
       }
     })
 
